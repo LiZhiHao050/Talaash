@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<!--加载驱动jar包 修改自己的位置 -->
+	<classPathEntry location="X:\Maven_Res\mysql\mysql-connector-java\5.1.21\mysql-connector-java-5.1.21.jar" />
+<!-- 	<classPathEntry location="E:\zzz_java_20190317\ZhangzeJob20190402/mysql-connector-java-5.1.8-bin.jar" /> -->
+
+
+	<!--上下文的配置 -->
+	<context id="bw" targetRuntime="MyBatis3">
+
+		<!--生成序列化的接口 -->
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+
+
+		<!--生成toString方法 -->
+		<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+
+		<!--连接配置 修改的自己的数据库 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/talaash_db" userId="root"
+			password="root">
+		</jdbcConnection>
+
+		<!--关于小数的映射类型 -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!--Java Bean 记得修改包名 -->
+		<javaModelGenerator targetPackage="com.talaash.entity"
+			targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+
+		<!--JavaBean对应Mapper.xml文件 -->
+		<sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+
+		<!--JavaBean数据库操作的DAO接口文件 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.talaash.mapper" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+
+<!--		<table schema="" tableName="mj_article" domainObjectName="Article" />-->
+<!--		<table schema="" tableName="mj_clue" domainObjectName="Clue" />-->
+<!--		<table schema="" tableName="mj_comment" domainObjectName="Comment" />-->
+<!--		<table schema="" tableName="mj_disappeared_person" domainObjectName="DisappearedPerson" />-->
+		<table schema="" tableName="mj_family" domainObjectName="Family" />
+<!--		<table schema="" tableName="mj_finger" domainObjectName="Finger" />-->
+<!--		<table schema="" tableName="mj_friend_linkage" domainObjectName="FriendLinkage" />-->
+<!--		<table schema="" tableName="mj_navigation_bar" domainObjectName="NavigationBar" />-->
+<!--		<table schema="" tableName="mj_region" domainObjectName="Region" />-->
+<!--		<table schema="" tableName="mj_user" domainObjectName="User" />-->
+
+	</context>
+</generatorConfiguration>
